@@ -1,0 +1,72 @@
+scalar DateTime
+
+type Query {
+  currentUser: User
+}
+
+type Mutation {
+  signupByInvite(data: SignupByInviteInput!): AuthPayload!
+  signup(data: SignupInput!): AuthPayload!
+  confirmEmail(email: String!, emailConfirmToken: String!): AuthPayload!
+  inviteUser(data: InviteUserInput!): UserIdPayload!
+  login(email: String!, password: String!): AuthPayload!
+  changePassword(oldPassword: String!, newPassword: String!): UserIdPayload!
+  updateCurrentUser(data: UserUpdateInput!): User
+  triggerPasswordReset(email: String!): TriggerPasswordResetPayload!
+  passwordReset(
+    email: String!
+    resetToken: String!
+    password: String!
+  ): UserIdPayload!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type UserIdPayload {
+  id: ID!
+}
+
+type TriggerPasswordResetPayload {
+  ok: Boolean!
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String!
+  inviteAccepted: Boolean!
+  emailConfirmed: Boolean!
+  deletedAt: DateTime
+  lastLogin: DateTime
+  joinedAt: DateTime!
+  isSuper: Boolean!
+}
+
+input InviteUserInput {
+  email: String!
+}
+
+input UserUpdateInput {
+  email: String
+  firstName: String
+  lastName: String
+}
+
+input SignupByInviteInput {
+  email: String!
+  inviteToken: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}

@@ -1,0 +1,12 @@
+export declare const MissingDataError: any;
+export declare const InvalidEmailError: any;
+export declare const ResetTokenExpiredError: any;
+export declare const PasswordTooShortError: any;
+export declare const UserNotFoundError: any;
+export declare const InvalidInviteTokenError: any;
+export declare const InvalidEmailConfirmToken: any;
+export declare const UserEmailExistsError: any;
+export declare const UserInviteNotAcceptedError: any;
+export declare const UserDeletedError: any;
+export declare const UserEmailUnconfirmedError: any;
+export declare const InvalidOldPasswordError: any;
